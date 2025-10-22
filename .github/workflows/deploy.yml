@@ -20,7 +20,7 @@ jobs:
               uses: docker/build-push-action@v6
               with:
                 context: .
-                file: .
+                file: ./dockerfile
                 push: true
                 tags: |
                   falace/api_python:v1
