@@ -42,7 +42,7 @@ jobs:
                   ssh-private-key: ${{ secrets.SSH_KEY }}
 
             - name: Add git hub
-              run: git clone git@github.com:alexsandroocanha/FastApi-Service.git ~/Pasta
+              run: git clone git@github.com:alexsandroocanha/FastApi-Service-Manifests.git ~/Pasta
             
 
             - name: Create new manifest
