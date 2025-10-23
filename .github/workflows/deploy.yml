@@ -25,7 +25,7 @@ jobs:
                 file: ./dockerfile
                 push: true
                 tags: |
-                  falace/api_python:v1
+                  falace/api_python:deploy${{github.sha}}
                   falace/api_python:latest
 
     Deploy:
@@ -34,12 +34,48 @@ jobs:
         environment: Docker
         steps:
             - name:  Create new repo
-              run: mkdir Pasta
+              run: mkdir ~/Pasta
             
             - name: Add git hub
-              run: git clone https://github.com/alexsandroocanha/FastApi-Service-Manifests.git Pasta
+              run: git clone https://github.com/alexsandroocanha/FastApi-Service-Manifests.git ~/Pasta
             
             - name: Add ssh key
               uses: webfactory/ssh-agent@v0.9.0
               with:
                   ssh-private-key: ${{ secrets.SSH_KEY }}
+
+            - name: Create new manifest
+              run: |
+                cat > ~/Pasta/deployment-v2.yaml <<EOF
+                apiVersion: apps/v1
+                kind: Deployment
+                metadata:
+                  name: hello-api
+                  namespace: argocd
+                  labels:
+                    app: hello-api
+                    tier: frontend
+                spec:
+                  replicas: 3
+                  selector:
+                    matchLabels:
+                      app: hello-api
+                  template:
+                    metadata:
+                      name: hello-api
+                      labels:
+                        app: hello-api
+                    spec:
+                      containers:
+                        - name: hello-api
+                          image: falace/api_python:${{ github.sha }}
+                          ports:
+                            - containerPort: 8000
+                EOF
+            
+            - name: Pull Request
+              run: |
+                cd ~/Pasta
+                git add .
+                git commit -m "New Pullrequest"
+                git push
