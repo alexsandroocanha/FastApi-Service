@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-api
+  namespace: argocd
+  labels:
+    app: hello-api
+    tier: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-api
+  template:
+    metadata:
+      name: hello-api
+      labels:
+        app: hello-api
+    spec:
+      containers:
+        - name: hello-api
+          image: falace/api_python:219add510373faeee93c4f2b5265b62f562e4654
+          ports:
+            - containerPort: 8000
