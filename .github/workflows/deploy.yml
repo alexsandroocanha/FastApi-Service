@@ -3,8 +3,13 @@ on:
     workflow_dispatch:
     push:
         branches: ['main']
+
+env:
+  version: 
+    'v1'
+
 jobs:
-    Ci:
+    Build:
         runs-on: ubuntu-latest
         environment: Docker
         steps:
@@ -27,10 +32,22 @@ jobs:
                   falace/api_python:v1
                   falace/api_python:latest
 
-            - name: Set config SSH Key
+    Deploy:
+        runs-on: ubuntu-latest
+        environment: Docker
+        steps:
+            - name:  Create new repo
+              run: mkdir Pasta
+            
+            - name: Add git hub
+              run: git clone https://github.com/alexsandroocanha/FastApi-Service-Manifests.git Pasta
+            
+            - name: Add ssh key
               run: |
-                cat ${{ secrets.SSH_CONFIG }} > ~/.ssh/config
-                cat ${{ secrets.SSH_KEY }} > ~/.ssh/github
-
-            - name: Pull from git
-              run: git add origin
+                mkdir ~/.ssh/
+                prinf "${{ secrets.SSH_KEY }}" >> ~/.ssh/github
+                prinf "${{ secrets.SSH_CONFIG }}" >> ~/.ssh/config
+                chmod 700 ~/.ssh/github
+                chmod 700 ~/.ssh/config
+                eval "$(ssh-agent -s)"
+                ssh-add ~/.ssh/github
