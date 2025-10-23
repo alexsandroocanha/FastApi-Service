@@ -56,6 +56,12 @@ jobs:
                   labels:
                     app: hello-api
                 spec:
+                  strategy:
+                    type: RollingUpdate
+                    rollingUpdate:
+                      maxUnavailable: 100%  
+                      maxSurge: 0            
+                  revisionHistoryLimit: 1
                   replicas: 3
                   selector:
                     matchLabels:
@@ -99,6 +105,8 @@ jobs:
                       port: 8000
                       targetPort: 8000 
                       nodePort: 30080
+
+
                 EOF
             
             - name: Pull Request
