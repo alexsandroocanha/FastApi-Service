@@ -70,7 +70,7 @@ jobs:
                       containers:
                         - name: hello-api
                           image: 
-                            falace/api_python:${{ github.sha }}
+                            falace/api_python:deploy-${{github.sha}}
                           ports:
                             - containerPort: 8000
                 EOF
