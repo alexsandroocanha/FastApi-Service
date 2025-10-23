@@ -76,8 +76,8 @@ jobs:
             - name: Pull Request
               run: |
                 cd ~/Pasta
-                git config --global user.email "mega232omega@gmail.com"
-                git config --global user.name "Pipeline"
+                git config --global user.email "alexsandroocanha@gmail.com"
+                git config --global user.name "Alexsandro Ocanha Rodrigues"
                 git add .
                 git commit -m "New Pullrequest"
                 git push
