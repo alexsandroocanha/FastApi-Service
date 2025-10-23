@@ -52,10 +52,9 @@ jobs:
                 kind: Deployment
                 metadata:
                   name: hello-api
-                  namespace: default
+                  namespace: argocd
                   labels:
                     app: hello-api
-                    tier: frontend
                 spec:
                   replicas: 3
                   selector:
@@ -63,16 +62,43 @@ jobs:
                       app: hello-api
                   template:
                     metadata:
-                      name: hello-api
                       labels:
                         app: hello-api
                     spec:
                       containers:
                         - name: hello-api
-                          image: 
-                            falace/api_python:deploy-${{github.sha}}
+                          image: falace/api_python:deploy-${{github.sha}}
                           ports:
                             - containerPort: 8000
+                          readinessProbe:
+                            httpGet:
+                              path: /health
+                              port: 8000
+                            initialDelaySeconds: 5
+                            periodSeconds: 10
+                          livenessProbe:
+                            httpGet:
+                              path: /health
+                              port: 8000
+                            initialDelaySeconds: 10
+                            periodSeconds: 20
+
+                ---
+
+                apiVersion: v1
+                kind: Service
+                metadata:
+                  name: hello-api
+                  namespace: argocd
+                spec:
+                  type: NodePort
+                  selector:
+                    app: hello-api
+                  ports:
+                    - name: http
+                      port: 8000
+                      targetPort: 8000 
+                      nodePort: 30080
                 EOF
             
             - name: Pull Request
