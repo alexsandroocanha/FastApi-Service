@@ -26,8 +26,11 @@ jobs:
                 tags: |
                   falace/api_python:v1
                   falace/api_python:latest
-                  
+
             - name: Set config SSH Key
               run: |
                 cat ${{ secrets.SSH_CONFIG }} > ~/.ssh/config
                 cat ${{ secrets.SSH_KEY }} > ~/.ssh/github
+
+            - name: Pull from git
+              run: git add origin
