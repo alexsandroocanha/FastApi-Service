@@ -9,6 +9,11 @@ Este repositório demonstra um **deploy automatizado** de ponta a ponta: a cada 
 * Conta GitHub
 * Cluster Kubernetes (Rancher Desktop, Minikube, Kind)
 
+### Informações Adicionais
+> Se por acaso for utilizar este repositorio, comece pelo repo de Manifesto. Pois sera exencial para este workflow.
+>
+> [![Github Pages](https://img.shields.io/badge/FastApi%20Service%20Manifests-121013?style=for-the-badge&logo=github&logoColor=white)](https://github.com/alexsandroocanha/FastApi-Service-Manifests)
+
 ### Topicos
 * [Visão Geral](#visão-geral)
 * [Estrutura](#estrutura-do-repositorio)
