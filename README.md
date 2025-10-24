@@ -119,8 +119,8 @@ Build:
 As imagens que irão para o dockerhub seguirão este modelo
 
 <img
-    heigth="100"
-    src="imagens/image.png">
+  height="300"
+  src="imagens/image.png">
 
 <br>
 
@@ -229,6 +229,8 @@ Este é o primeiro repositorio, para dar continuidade iremos para o segundo repo
 
 [![Github Pages](https://img.shields.io/badge/FastApi%20Service%20Manifests-121013?style=for-the-badge&logo=github&logoColor=white)](https://github.com/alexsandroocanha/FastApi-Service-Manifests)
 
+* Caso tenha alguma duvida ou dificuldade, me mande um email que tentarei te ajudar
+* Trabalho atualizado `24/10/2025`
 
 ### Informações para Contato
 
