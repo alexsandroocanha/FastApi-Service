@@ -19,7 +19,7 @@ This repository demonstrate **end-to-end** automated deploy. With each push and 
 * [Repository Structure](#Structure-Repository)
 * [Configure GitHub Actions token secrets](#Secret-Token-Configuration-GitHub-Actions)
 * [How to run the application](#How-to-run-the-application)
-* [Workflow Configuration](#configuração-do-cicd)
+* [Workflow Configuration](#workflow-configuration)
   * [Job - Build - Imagem](#build)
   * [Job - Build - Dockerhub](#dockerhub)
   * [Job - Deploy - Manifesto](#deploy)
@@ -30,7 +30,7 @@ This repository demonstrate **end-to-end** automated deploy. With each push and 
 - Manifests Repository: https://github.com/alexsandroocanha/FastApi-Service-Manifests 
 
 ## Overview
-> Este repositório contém um microserviço **FastAPI** empacotado em **Docker** e integrado a um pipeline de **CI/CD** no GitHub Actions. O fluxo é: **build → push da imagem → PR automático no repo de manifests** (atualizando a tag/sha da imagem) → **sync do Argo CD** no cluster Kubernetes.
+> This repository contains a **FastAPI microservice**, transformed into a **Docker image** and integrated with a GitHub Actions workflow.
 
 ## Structure Repository
 Este projeto é dividido em 2 repositórios:
@@ -88,7 +88,7 @@ Caso queira utilizar este modelo de repositorio, antes de iniciar, você necessi
 | SSH_KEY           | sim         | Chave ssh para acessar o seu repositorio git hub  |
 | REPO_GIT          | sim         | Link para o `segundo repositorio`                 |
 
-## Configuração do CI/CD
+## WorkFlow Configuration
 O workflow ficou separado em 2 jobs, a build da imagem da aplicação e outro para o Pull Request no repositorio de Manifesto
 
 ### Build:
