@@ -1,20 +1,20 @@
 <h1 align="center">FastApi Service</h1>
-<p align="center"> <i>Api com CI/CD e deploy via Argo CD</i></p>
+<p align="center"> <i>CI/CD API with deployment from Argo CD</i></p>
 
-## Resumo
-Este repositório demonstra um **deploy automatizado** de ponta a ponta: a cada push/merge na branch `main`, a imagem Docker é construída e publicada. O CI/CD abre um **Pull Request** no repositório de manifests atualizando a **imagem referenciada**; e, após a aprovação, o `Argo CD` sincroniza automaticamente as mudanças no **cluster Kubernetes**.
+## Resum
+This repository demonstrate **end-to-end** automated deploy. With each push and merge on to branch `main`, the docker image is built and publish on Docker Hub. The CI/CD opens a **Pull Request** in the `manifest repository`, updating the Application Image, and, after approval, ArgoCD synchronizes the changes in the Kubernetes cluster.
 
-### Requisitos
-* Conta Dockerhub 
-* Conta GitHub
+### Requiriments
+* DockerHub Account
+* GitHub Account
 * Cluster Kubernetes (Rancher Desktop, Minikube, Kind)
 
-### Informações Adicionais
-> Se por acaso for utilizar este repositorio, comece pelo repo de Manifesto. Pois sera exencial para este workflow.
+### Additionals informations
+> If you are going to use this repository, start with the _manifest repository_. It will be essential for the Workflow
 >
 > [![Github Pages](https://img.shields.io/badge/FastApi%20Service%20Manifests-121013?style=for-the-badge&logo=github&logoColor=white)](https://github.com/alexsandroocanha/FastApi-Service-Manifests)
 
-### Topicos
+### Topics
 * [Visão Geral](#visão-geral)
 * [Estrutura](#estrutura-do-repositorio)
 * [Configuração Secrets GitHub Actions](#configuração-secrets-github-actions)
@@ -24,7 +24,7 @@ Este repositório demonstra um **deploy automatizado** de ponta a ponta: a cada 
   * [Job - Build - Dockerhub](#dockerhub)
   * [Job - Deploy - Manifesto](#deploy)
 
-## Links Rapidos
+## Fast Links
 - CI/CD: `./.github/workflows/deploy.yml`
 - Dockerfile: `./Dockerfile`
 - Repo de Manifests: https://github.com/alexsandroocanha/FastApi-Service-Manifests 
