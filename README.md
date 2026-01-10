@@ -15,11 +15,11 @@ This repository demonstrate **end-to-end** automated deploy. With each push and 
 > [![Github Pages](https://img.shields.io/badge/FastApi%20Service%20Manifests-121013?style=for-the-badge&logo=github&logoColor=white)](https://github.com/alexsandroocanha/FastApi-Service-Manifests)
 
 ### Topics
-* [Visão Geral](#visão-geral)
-* [Estrutura](#estrutura-do-repositorio)
-* [Configuração Secrets GitHub Actions](#configuração-secrets-github-actions)
-* [Como Rodar a Aplicação](#como-rodar-a-aplicação)
-* [Configuração do Workflow](#configuração-do-cicd)
+* [Overview](#Overview)
+* [Repository Structure](#Structure-Repository)
+* [Configure GitHub Actions token secrets](#Secret-Token-Configuration-GitHub-Actions)
+* [How to run the application](#How-to-run-the-application)
+* [Workflow Configuration](#configuração-do-cicd)
   * [Job - Build - Imagem](#build)
   * [Job - Build - Dockerhub](#dockerhub)
   * [Job - Deploy - Manifesto](#deploy)
@@ -27,12 +27,12 @@ This repository demonstrate **end-to-end** automated deploy. With each push and 
 ## Fast Links
 - CI/CD: `./.github/workflows/deploy.yml`
 - Dockerfile: `./Dockerfile`
-- Repo de Manifests: https://github.com/alexsandroocanha/FastApi-Service-Manifests 
+- Manifests Repository: https://github.com/alexsandroocanha/FastApi-Service-Manifests 
 
-## Visão geral
+## Overview
 > Este repositório contém um microserviço **FastAPI** empacotado em **Docker** e integrado a um pipeline de **CI/CD** no GitHub Actions. O fluxo é: **build → push da imagem → PR automático no repo de manifests** (atualizando a tag/sha da imagem) → **sync do Argo CD** no cluster Kubernetes.
 
-## Estrutura do repositorio
+## Structure Repository
 Este projeto é dividido em 2 repositórios:
 1. **Aplicação & CI/CD (este repo)**
      * Contém o código da API (FastAPI), Dockerfile e o workflow do GitHub Actions para buildar e publicar a imagem no Docker Hub (ou outro registry).
@@ -65,7 +65,7 @@ Este projeto é dividido em 2 repositórios:
 
 ---
 
-## Como rodar a aplicação
+## How to run the application
 Primeiro você tera que clonar o repositorio
 ```bash
 git clone https://github.com/alexsandroocanha/FastApi-Service
@@ -77,7 +77,7 @@ Após isso você precisará criar um novo repositorio na sua conta `Github`, ap�
 git remote set-url origin <novo_url>
 ```
 
-## Configuração Secrets (GitHub Actions)
+## Secret Token Configuration (GitHub Actions)
 
 Caso queira utilizar este modelo de repositorio, antes de iniciar, você necessitara de incrementar algumas Variaveis de Ambientes(secrets) obrigatorioas.
 
