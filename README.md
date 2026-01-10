@@ -15,10 +15,10 @@ This repository demonstrate **end-to-end** automated deploy. With each push and 
 > [![Github Pages](https://img.shields.io/badge/FastApi%20Service%20Manifests-121013?style=for-the-badge&logo=github&logoColor=white)](https://github.com/alexsandroocanha/FastApi-Service-Manifests)
 
 ### Topics
-* [Overview](#Overview)
-* [Repository Structure](#Structure-Repository)
-* [Configure GitHub Actions token secrets](#Secret-Token-Configuration-GitHub-Actions)
-* [How to run the application](#How-to-run-the-application)
+* [Overview](#overview)
+* [Repository Structure](#structure-repository)
+* [Configure GitHub Actions token secrets](#secret-token-configuration-gitHub-actions)
+* [How to run the application](#how-to-run-the-application)
 * [Workflow Configuration](#workflow-configuration)
   * [Job - Build - Imagem](#build)
   * [Job - Build - Dockerhub](#dockerhub)
@@ -33,9 +33,9 @@ This repository demonstrate **end-to-end** automated deploy. With each push and 
 > This repository contains a **FastAPI microservice**, transformed into a **Docker image** and integrated with a GitHub Actions workflow.
 
 ## Structure Repository
-Este projeto é dividido em 2 repositórios:
-1. **Aplicação & CI/CD (este repo)**
-     * Contém o código da API (FastAPI), Dockerfile e o workflow do GitHub Actions para buildar e publicar a imagem no Docker Hub (ou outro registry).
+Is this project and divided into 2 repositories:
+1. **Aplication & CI/CD**
+     * It contains  the FastAPI code, Dockerfile and GitHub Actions workflow.
 
 >```
 >├─ .github/workflows/deploy.yml
@@ -48,8 +48,8 @@ Este projeto é dividido em 2 repositórios:
 ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 
 
-2. Manifestos Kubernetes & ArgoCD (repo separado)
-    * Contém os manifests K8s (Deployment/Service/etc.) e o Application do ArgoCD que consome a imagem publicada e faz o deploy/sync no cluster.
+2. Kubernetes Manifest & ArgoCD 
+    * It contains the K8S manifest and ArgoCD manifest.
 
 > ```
 > ├─ ArgoCD/
