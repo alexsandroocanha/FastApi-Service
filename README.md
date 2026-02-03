@@ -74,7 +74,7 @@ git clone https://github.com/alexsandroocanha/FastApi-Service
 Modify remote state in the Repository
 
 ```
-git remote set-url origin <novo_url>
+git remote set-url origin <new_url>
 ```
 
 ## Secret Token Configuration (GitHub Actions)
@@ -97,7 +97,7 @@ O workflow ficou separado em 2 jobs, a build da imagem da aplicação e outro pa
 ```yaml
 Build:
         runs-on: ubuntu-latest
-        environment: Docker # Enviroment aonde as suas secrets estão localizadas
+        environment: Docker
         steps:
             - name: Use actions checkout
               uses: actions/checkout@v4
@@ -115,13 +115,12 @@ Build:
                 file: ./dockerfile
                 push: true
                 tags: |
-                  # A imagem sobe com o hash do commit como tag
                   usuario/nome-da-aplicacao:deploy-${{github.sha}} 
                   usuario/nome-da-aplicacao
 ```
 
 ### Dockerhub
-As imagens que irão para o dockerhub seguirão este modelo
+Images published on Docker Hub will follow this naming convention:
 
 <img
   height="300"
@@ -130,14 +129,15 @@ As imagens que irão para o dockerhub seguirão este modelo
 <br>
 
 ### Deploy:
-Este job é responsavel por deploya o manifesto para o `segundo repositorio`. 
-> O deploy sobe com um manifesto que ira  para o `segundo repositorio`. Caso queira alterar alguma coisa, você tera que alterar diretamente o Workflow.
+This job is responsible for deploying the manifest to the second repository.
+> The deployment uses a manifest sent to the second repository.
+> Any changes must be made directly in the workflow.
 
 ```yaml
     Deploy:
         runs-on: ubuntu-latest
         needs: Build
-        environment: Docker # Enviroment aonde as suas secrets estão localizadas
+        environment: Docker 
         steps:
             - name:  Create new repo
               run: mkdir ~/Pasta
@@ -229,15 +229,12 @@ Este job é responsavel por deploya o manifesto para o `segundo repositorio`.
 ```
 
 
-### Considerações Finais
-Este é o primeiro repositorio, para dar continuidade iremos para o segundo repositorio.
+### Final Considerations
+This is the first repository. To continue, we will move on to the second repository.
 
 [![Github Pages](https://img.shields.io/badge/FastApi%20Service%20Manifests-121013?style=for-the-badge&logo=github&logoColor=white)](https://github.com/alexsandroocanha/FastApi-Service-Manifests)
 
-* Caso tenha alguma duvida ou dificuldade, me mande um email que tentarei te ajudar
-* Trabalho atualizado `24/10/2025`
-
-### Informações para Contato
+### Contact Information
 
 [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alexsandro-ocanha-rodrigues-77149a35b/)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/alexsandro.pcap/)
