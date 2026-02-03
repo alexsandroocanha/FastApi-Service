@@ -66,12 +66,12 @@ Is this project and divided into 2 repositories:
 ---
 
 ## How to run the application
-Primeiro você tera que clonar o repositorio
+First step, clone this repository.
 ```bash
 git clone https://github.com/alexsandroocanha/FastApi-Service
 ```
 
-Após isso você precisará criar um novo repositorio na sua conta `Github`, após criar você tera que modificar o origin do github do `repositorio clonado`.
+Modify remote state in the Repository
 
 ```
 git remote set-url origin <novo_url>
@@ -79,14 +79,14 @@ git remote set-url origin <novo_url>
 
 ## Secret Token Configuration (GitHub Actions)
 
-Caso queira utilizar este modelo de repositorio, antes de iniciar, você necessitara de incrementar algumas Variaveis de Ambientes(secrets) obrigatorioas.
+Increment as environment variable
 
-| Nome              | Obrigatória | Descrição breve                                   |  
+| Name              | Required    | Description                                       |  
 |-------------------|-------------|---------------------------------------------------|
-| DOCKER_PASSWORD   | sim         | Token de acesso para a sua conta no docker hub    |
-| DOCKER_USERNAME   | sim         | Usuario da sua conta docker hub                   |
-| SSH_KEY           | sim         | Chave ssh para acessar o seu repositorio git hub  |
-| REPO_GIT          | sim         | Link para o `segundo repositorio`                 |
+| DOCKER_PASSWORD   | yes         | Docker Hub access token                           |
+| DOCKER_USERNAME   | yes         | Docker Hub username                               |
+| SSH_KEY           | yes         | SSH private key for GitHub access                 |
+| REPO_GIT          | yes         | URL of the external Git repository                |
 
 ## WorkFlow Configuration
 O workflow ficou separado em 2 jobs, a build da imagem da aplicação e outro para o Pull Request no repositorio de Manifesto
