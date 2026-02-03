@@ -115,8 +115,8 @@ Build:
                 file: ./dockerfile
                 push: true
                 tags: |
-                  usuario/nome-da-aplicacao:deploy-${{github.sha}} 
-                  usuario/nome-da-aplicacao
+                  user/app-name:deploy-${{github.sha}} 
+                  user/app-name
 ```
 
 ### Dockerhub
@@ -140,7 +140,7 @@ This job is responsible for deploying the manifest to the second repository.
         environment: Docker 
         steps:
             - name:  Create new repo
-              run: mkdir ~/Pasta
+              run: mkdir ~/Dir
               
             - name: Add ssh key
               uses: webfactory/ssh-agent@v0.9.0
@@ -148,12 +148,12 @@ This job is responsible for deploying the manifest to the second repository.
                   ssh-private-key: ${{ secrets.SSH_KEY }}
 
             - name: Add git hub
-              run: git clone ${{ secrets.REPO_GIT }} ~/Pasta
+              run: git clone ${{ secrets.REPO_GIT }} ~/Dir
             
 
             - name: Create new manifest
               run: |
-                cat > ~/Pasta/deployment-v1.yaml <<EOF
+                cat > ~/Dir/deployment-v1.yaml <<EOF
                 apiVersion: apps/v1
                 kind: Deployment
                 metadata:
@@ -179,7 +179,7 @@ This job is responsible for deploying the manifest to the second repository.
                     spec:
                       containers:
                         - name: hello-api
-                          image: usuario/nome-da-aplicacao:deploy-${{github.sha}}
+                          image: user/app-name:deploy-${{github.sha}}
                           ports:
                             - containerPort: 8000
                           readinessProbe:
