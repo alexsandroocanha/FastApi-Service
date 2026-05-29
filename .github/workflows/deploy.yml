@@ -28,6 +28,9 @@ jobs:
                   falace/api_python:deploy-${{github.sha}}
                   falace/api_python:latest
 
+
+    
+
     Deploy:
         runs-on: ubuntu-latest
         needs: Build
