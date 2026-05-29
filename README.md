@@ -3,6 +3,7 @@
 
 ## Summary
 
+
 This repository demonstrates an **end-to-end automated deployment pipeline**.  
 With each push or merge into the `main` branch, a Docker image is built and published to Docker Hub.
 
